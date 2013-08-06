@@ -92,6 +92,9 @@ nnoremap <C-v> <C-w>v<C-w>l
 " Make the current file executable
 nmap ,x :w<cr>:!chmod 755 %<cr>:e<c>
 
+""""""
+" Smart Tab
+""""""
 function! InsertTabWrapper()
     let col = col('.') - 1
     if !col || getline('.')[col -1] !~ '\k'
@@ -102,3 +105,17 @@ function! InsertTabWrapper()
 endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <s-tab> <c-n>
+
+"""""""""""
+" Rename Current File
+""""""""""
+function! RenameFile()
+    let old_name = expand('%')
+    let new_name = input('New File name: ', expand('%'), 'file')
+    if new_name != '' && new_name != old_name
+        exec ':saveas ' . new_name
+        exec ':silent !rm ' . old_name
+        redraw!
+    endif
+endfunction
+map <leader>n :call RenameFile()<cr>
