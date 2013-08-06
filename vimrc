@@ -92,4 +92,13 @@ nnoremap <C-v> <C-w>v<C-w>l
 " Make the current file executable
 nmap ,x :w<cr>:!chmod 755 %<cr>:e<c>
 
-
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col -1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-p>"
+    endif
+endfunction
+inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+inoremap <s-tab> <c-n>
