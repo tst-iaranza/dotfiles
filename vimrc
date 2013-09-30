@@ -119,3 +119,6 @@ function! RenameFile()
     endif
 endfunction
 map <leader>n :call RenameFile()<cr>
+
+" Fix the max number of files indexed by Command-T
+let g:CommandTMaxFiles=50000
