@@ -17,6 +17,7 @@
     gnc = goodness --cached
     fa = fetch --all
     pom = push origin master
+    rup = remote update --prune
 
     l = "!source ~/.dotfiles/githelpers && pretty_git_log"
     la = !git l --all
