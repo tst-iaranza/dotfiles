@@ -1,4 +1,4 @@
-call pathogen#incubate()
+call pathogen#infect('bundle/{}')
 call pathogen#helptags()
 
 " Change the leader from \ to ,
